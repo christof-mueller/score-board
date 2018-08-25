@@ -1,0 +1,11 @@
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\bin\Debug\TTScoreBoard.exe.config
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\bin\Debug\TTScoreBoard.exe
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\bin\Debug\TTScoreBoard.pdb
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\bin\Debug\Tinkerforge.dll
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\bin\Debug\Tinkerforge.xml
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.csprojResolveAssemblyReference.cache
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.Properties.Resources.resources
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.csproj.GenerateResource.Cache
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.exe
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.pdb
+C:\Users\chris\Documents\Visual Studio 2017\Projects\score-board\TTScoreBoard\obj\Debug\TTScoreBoard.Devices.VirtualDisplay.resources
