@@ -42,6 +42,16 @@ namespace TTScoreBoard.Devices.TinkerforgeDisplay
 
             // Register frame started callback to function FrameStartedCB
             ls.FrameStartedCallback += FrameStartedCB;
+
+            int pixelNumber = mHeight * mWidth;
+
+            // alles aus
+            byte[] pixelPuffer = new byte[pixelNumber * 3];
+            for (int i = 0; i < pixelPuffer.Length; i++)
+            {
+                pixelPuffer[i] = 0;
+            }
+            ls.SetLEDValues(0, pixelPuffer);
         }
 
         public void showScreen(Screen screen)
@@ -53,20 +63,61 @@ namespace TTScoreBoard.Devices.TinkerforgeDisplay
         static void FrameStartedCB(BrickletLEDStripV2 sender, int length)
         {
             if (TinkerforgeDisplay.nextScreen != null)
-            { 
+            {
+                byte[] pixelPuffer = new byte[length];
                 for (int i = 0; i < length; i = i + 3)
                 {
-                    Byte pixelValue = findPixelInScreen(i / 3, TinkerforgeDisplay.nextScreen);
-                    if (pixelValue > 0)
+                    Byte col = findPixelInScreen(i / 3, TinkerforgeDisplay.nextScreen);
+                    try {
+                        switch (col)
+                        {
+                            case 0: // BLACK
+                                pixelPuffer[i] = 0;
+                                pixelPuffer[i + 1] = 0;
+                                pixelPuffer[i + 2] = 0;
+                                break;
+                            case 1: // RED
+                                pixelPuffer[i] = 10;
+                                pixelPuffer[i + 1] = 0;
+                                pixelPuffer[i + 2] = 0;
+                                break;
+                            case 2: // GREEN
+                                pixelPuffer[i] = 0;
+                                pixelPuffer[i + 1] = 10;
+                                pixelPuffer[i + 2] = 0;
+                                break;
+                            case 3: // BLUE
+                                pixelPuffer[i] = 0;
+                                pixelPuffer[i + 1] = 0;
+                                pixelPuffer[i + 2] = 10;
+                                break;
+                            case 4: // TÜRKIS
+                                pixelPuffer[i] = 0;
+                                pixelPuffer[i + 1] = 10;
+                                pixelPuffer[i + 2] = 10;
+                                break;
+                            case 5: // MAGENTA
+                                pixelPuffer[i] = 10;
+                                pixelPuffer[i + 1] = 0;
+                                pixelPuffer[i + 2] = 10;
+                                break;
+                            case 6: // WHITE
+                                pixelPuffer[i] = 5;
+                                pixelPuffer[i + 1] = 10;
+                                pixelPuffer[i + 2] = 5;
+                                break;
+                            case 7: // YELLOW
+                                pixelPuffer[i] = 5;
+                                pixelPuffer[i + 1] = 10;
+                                pixelPuffer[i + 2] = 0;
+                                break;
+                        }
+                    } catch(IndexOutOfRangeException)
                     {
-                        sender.SetLEDValues(i, new byte[] { 5, 0, 0 });
+                        // WARUM?
                     }
-                    else
-                    {
-                        sender.SetLEDValues(i, new byte[] { 0, 0, 0 });
-                    }
-                    
                 }
+                sender.SetLEDValues(0, pixelPuffer);
             }
         }
 

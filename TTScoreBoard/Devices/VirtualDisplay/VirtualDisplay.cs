@@ -30,7 +30,7 @@ namespace TTScoreBoard.Devices
                 for (int x = 0; x < mWidth; x++)
                 {
                     Byte col = screen.pixelAt(x, y);
-                    if (col > 0) setDisplayPixel(x, y, new PixelColor());
+                    if (col > 0) setDisplayPixel(x, y, col);
                 }
             }
         }
@@ -85,17 +85,27 @@ namespace TTScoreBoard.Devices
             return (y * mWidth) + x;
         }
 
-        private void setDisplayPixel(int x, int y, PixelColor pixelColor)
+        private void setDisplayPixel(int x, int y, Byte col)
         {
             if (x < 0 || x > mWidth || y < 0 || y > mHeight) throw new IndexOutOfRangeException();
 
             Button pixel = pixels[pixelNumberByXY(x, y)];
-            pixel.BackColor = Color.Red;
+            switch(col)
+            {
+                case 0: pixel.BackColor = Color.Black; break;
+                case 1: pixel.BackColor = Color.Red; break;
+                case 2: pixel.BackColor = Color.Green; break;
+                case 3: pixel.BackColor = Color.Blue; break;
+                case 4: pixel.BackColor = Color.BlueViolet; break;
+                case 5: pixel.BackColor = Color.Magenta; break;
+                case 6: pixel.BackColor = Color.White; break;
+                case 7: pixel.BackColor = Color.Yellow; break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Screen screen = new Screen(16, 16);
+            Screen screen = new Screen(16, 32);
             screen.write("CCM");
           
             
